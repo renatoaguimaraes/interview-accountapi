@@ -11,6 +11,8 @@ docker-compose up
 
 If you have any question, please let me know.
 
+Regards,
+
 Renato Guimarães.
 
 # Form3 Take Home Exercise
