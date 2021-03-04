@@ -46,10 +46,7 @@ type AccountAPI struct {
 
 // NewAccountAPI create AccountAPI instance
 func NewAccountAPI() *AccountAPI {
-	baseURL := os.Getenv("ACCOUNT_API_URL")
-	if baseURL == "" {
-		baseURL = "http://localhost:8080"
-	}
+	baseURL := getEnv("ACCOUNT_API_URL", "http://localhost:8080")
 	return &AccountAPI{Client: http.DefaultClient, BaseURL: baseURL}
 }
 
@@ -126,7 +123,7 @@ func (api *AccountAPI) Delete(ID string, version int) error {
 }
 
 func getEnv(env, fallback string) string {
-	value := os.Getenv("ACCOUNT_API_URL")
+	value := os.Getenv(env)
 	if value != "" {
 		return value
 	}
