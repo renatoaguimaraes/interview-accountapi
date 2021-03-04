@@ -38,7 +38,7 @@ type Account struct {
 	Data AccountData `json:"data"`
 }
 
-// AccountAPI client interact with Account API
+// AccountAPI client to interact with Account API
 type AccountAPI struct {
 	Client  *http.Client
 	BaseURL string
@@ -71,7 +71,7 @@ func (api *AccountAPI) Create(account *Account) error {
 	return errors.New(string(body))
 }
 
-// Fetch an Account by id
+// Fetch an created Account by id
 func (api *AccountAPI) Fetch(ID string) (*Account, error) {
 	resp, err := api.Client.Get(api.BaseURL + "/v1/organisation/accounts/" + ID)
 	if err != nil {
@@ -102,7 +102,7 @@ func (api *AccountAPI) Fetch(ID string) (*Account, error) {
 	return &account, nil
 }
 
-// Delete an Account by id and version
+// Delete an created Account by id and version
 func (api *AccountAPI) Delete(ID string, version int) error {
 	req, err := http.NewRequest(http.MethodDelete, fmt.Sprintf("%s/v1/organisation/accounts/%s?version=%d", api.BaseURL, ID, version), nil)
 	resp, err := api.Client.Do(req)
